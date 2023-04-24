@@ -1,0 +1,20 @@
+<resources>
+    <string name="mci_triage" translatable="false">MCI Triage</string>
+    <string name="start" translatable="false">START</string>
+    <string name="salt" translatable="false">SALT</string>
+    <string name="asav" translatable="false">ASAV</string>
+    <string name="triage_steve" translatable="false">Triage Steve</string>
+    <string name="start_triage_adults">START Triage (Adults)</string>
+    <string name="able_to_walk">Able to walk?</string>
+    <string name="no">no</string>
+    <string name="reference" translatable="false">REFERENCE</string>
+    <string name="yes">yes</string>
+    <string name="spontaneous_breathing">Spontaneous Breathing</string>
+    <string name="app_name">triage_MCI</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="respiratory_rate">Respiratory Rate?</string>
+    <string name="position_airway">Position Airway</string>
+    <string name="perfusion_n_capillary_refill_or_radial_pulse">Perfusion?\n (capillary refill or radial pulse)</string>
+    <string name="can_obey_commands_n_such_as_pick_up_your_hand">Can obey commands? \n Such as pick up your hand</string>
+</resources>

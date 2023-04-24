@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_triage_adults">START法（成人版）</string>
+    <string name="able_to_walk">可以行走吗？</string>
+    <string name="no">否</string>
+    <string name="reference">参考文献</string>
+    <string name="yes">是</string>
+    <string name="spontaneous_breathing">自主呼吸</string>
+    <string name="app_name">MCI分诊</string>
+    <string name="perfusion_n_capillary_refill_or_radial_pulse">桡动脉搏动</string>
+    <string name="respiratory_rate">呼吸频率</string>
+    <string name="position_airway">开放气道</string>
+    <string name="can_obey_commands_n_such_as_pick_up_your_hand">可以遵循指令吗？\n例如举起手</string>
+</resources>
