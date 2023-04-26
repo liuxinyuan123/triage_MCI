@@ -1,15 +1,15 @@
 package com.example.triage_mci;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,6 +82,8 @@ public class respiratory_rate extends Fragment {
                 fragmentTransaction.commit();
                 above.setEnabled(true);
                 under.setEnabled(false);
+                Toast.makeText(getActivity(), R.string.Green_Toast, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -90,12 +92,19 @@ public class respiratory_rate extends Fragment {
             public void onClick(View view) {
                 above.setEnabled(false);
                 under.setEnabled(true);
+                Toast.makeText(getActivity(), "Please call the emergency! in respiratory rate", Toast.LENGTH_SHORT).show();
                 if (isdisplayed)
                 {
                     Fragment fragment_perfusion_rate = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_perfusion_rate);
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.remove(fragment_perfusion_rate);
                     fragmentTransaction.commit();
+                }
+
+                Fragment mental_status = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_mental_status);
+                if (mental_status != null)
+                {
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(mental_status).commit();
                 }
 
             }

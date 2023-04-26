@@ -12,9 +12,11 @@
     <string name="spontaneous_breathing">Spontaneous Breathing</string>
     <string name="app_name">triage_MCI</string>
     <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="respiratory_rate">Respiratory Rate?</string>
     <string name="position_airway">Position Airway</string>
     <string name="perfusion_n_capillary_refill_or_radial_pulse">Perfusion?\n (capillary refill or radial pulse)</string>
     <string name="can_obey_commands_n_such_as_pick_up_your_hand">Can obey commands? \n Such as pick up your hand</string>
+    <string name="Green_Toast">To look though the injured.</string>
 </resources>

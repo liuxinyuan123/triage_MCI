@@ -1,15 +1,15 @@
 package com.example.triage_mci;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,6 +76,7 @@ public class perfusion extends Fragment {
 
                 perfusion_no.setEnabled(false);
                 perfusion_yes.setEnabled(true);
+                Toast.makeText(getActivity(), "Please call the emergency! in perfusion ", Toast.LENGTH_SHORT).show();
                 Fragment fragment_mental_status = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_mental_status);
                 if (fragment_mental_status != null) {
                     getActivity().getSupportFragmentManager().beginTransaction().remove(fragment_mental_status).commit();

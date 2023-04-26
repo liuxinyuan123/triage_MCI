@@ -1,17 +1,22 @@
 package com.example.triage_mci;
 
-import android.content.Intent;
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,8 +24,6 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class spontaneous_breathing extends Fragment {
-
-
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -71,17 +74,26 @@ public class spontaneous_breathing extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_spontaneous_breathing, container, false);
 
+
+
+
         Button breath_yes = view.findViewById(R.id.START_breath_yes);
         Button breath_no = view.findViewById(R.id.START_breath_no);
+
+
 
 
         breath_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(getActivity(), "no breathing!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Please call the emergency! ", Toast.LENGTH_SHORT).show();
 
                 breath_no.setEnabled(false);
                 breath_yes.setEnabled(true);
+
+
+
+
 
                 Fragment rate_breath_reassess = new breathing_reassess();
                 FragmentManager rateBreath = getActivity().getSupportFragmentManager();
@@ -91,12 +103,27 @@ public class spontaneous_breathing extends Fragment {
                 fragmentTransaction.commit();
                 {
                     Fragment fragment_respiratory_rate = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_respiratory_rate);
+                    Fragment fragment_mental_status = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_mental_status);
                     FragmentTransaction fragmentTransaction_ = getActivity().getSupportFragmentManager().beginTransaction();
-                    if (fragment_respiratory_rate != null)
-                    {
+                    FragmentTransaction fragmentTransaction1 = getActivity().getSupportFragmentManager().beginTransaction();
+                    Fragment fragment_perfusion = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_perfusion);
+                    FragmentTransaction fragmentTransaction_perfusion = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    hideAllFragments_no();
+                    if (fragment_perfusion != null) {
+                        fragmentTransaction_perfusion.remove(fragment_perfusion);
+                        fragmentTransaction_perfusion.commit();
+                    }
+
+                    if (fragment_respiratory_rate != null) {
                         fragmentTransaction_.remove(fragment_respiratory_rate);
                         fragmentTransaction_.commit();
                     }
+                    if (fragment_mental_status != null) {
+                        fragmentTransaction1.remove(fragment_mental_status);
+                        fragmentTransaction1.commit();
+                    }
+
                 }
 
             }
@@ -113,23 +140,74 @@ public class spontaneous_breathing extends Fragment {
                 fragmentTransaction.commit();
                 breath_yes.setEnabled(false);
                 breath_no.setEnabled(true);
+                Toast.makeText(getActivity(), R.string.Green_Toast, Toast.LENGTH_SHORT).show();
 
-                {
-                    Fragment fragment_spontaneousBreath_reassess = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_spontaneousBreath_reassess);
-                    FragmentTransaction fragmentTransaction_ = getActivity().getSupportFragmentManager().beginTransaction();
-                    if (fragment_spontaneousBreath_reassess != null)
-                    {
-                        fragmentTransaction_.remove(fragment_spontaneousBreath_reassess);
-                        fragmentTransaction_.commit();
-                    }
-                }
+                hideAllFragments_yes();
+
             }
         });
-
 
 
         return view;
 
 
+    }
+
+    private void hideAllFragments_yes() {
+
+        // 隐藏呼吸频率Fragment
+        Fragment fragment_respiratory_rate = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_respiratory_rate);
+        if (fragment_respiratory_rate != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(fragment_respiratory_rate).commit();
+        }
+
+        Fragment fragment_spontaneousBreath_reassess = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_spontaneousBreath_reassess);
+        if (fragment_spontaneousBreath_reassess != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(fragment_spontaneousBreath_reassess).commit();
+        }
+
+        // 隐藏灌注率Fragment
+        Fragment fragment_perfusion_rate = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_perfusion_rate);
+        if (fragment_perfusion_rate != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(fragment_perfusion_rate).commit();
+        }
+
+
+        Fragment mental_status = getActivity().getSupportFragmentManager().findFragmentByTag("能否听从指令");
+        if (mental_status != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(mental_status).commit();
+        }
+
+        Fragment fragment_mental_status = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_mental_status);
+        if (fragment_mental_status != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(fragment_mental_status).commit();
+        }
+
+
+    }
+
+    private void hideAllFragments_no() {
+
+        // 隐藏呼吸频率Fragment
+        Fragment fragment_respiratory_rate = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_respiratory_rate);
+        if (fragment_respiratory_rate != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(fragment_respiratory_rate).commit();
+        }
+        // 隐藏灌注率Fragment
+        Fragment fragment_perfusion_rate = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_perfusion_rate);
+        if (fragment_perfusion_rate != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(fragment_perfusion_rate).commit();
+        }
+
+
+        Fragment mental_status = getActivity().getSupportFragmentManager().findFragmentByTag("能否听从指令");
+        if (mental_status != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(mental_status).commit();
+        }
+
+        Fragment fragment_mental_status = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_mental_status);
+        if (fragment_mental_status != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(fragment_mental_status).commit();
+        }
     }
 }

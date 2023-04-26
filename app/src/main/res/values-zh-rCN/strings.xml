@@ -11,4 +11,6 @@
     <string name="respiratory_rate">呼吸频率</string>
     <string name="position_airway">开放气道</string>
     <string name="can_obey_commands_n_such_as_pick_up_your_hand">可以遵循指令吗？\n例如举起手</string>
+    <string name="Green_Toast">你将看到一些简单处理的方法</string>
+
 </resources>

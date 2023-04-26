@@ -1,15 +1,15 @@
 package com.example.triage_mci;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 
 public class Triage_START extends AppCompatActivity {
@@ -36,11 +36,12 @@ public class Triage_START extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_triage_start);
 
-
         able_to_walk_no = findViewById( R.id.START_able_to_walk_no);
         able_to_walk_yes = findViewById(R.id.START_able_to_walk_yes);
         able_to_walk_no.setEnabled(true);
         able_to_walk_yes.setEnabled(true);
+
+
         //隐藏默认出现的有无呼吸
         {
         Fragment fragment_spontaneousBreath = getSupportFragmentManager().findFragmentById(R.id.fragment_spontaneousBreath);
@@ -84,6 +85,35 @@ public class Triage_START extends AppCompatActivity {
         }
 
 
+//        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+//        if (androidx.core.app.ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && androidx.core.app.ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//
+//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                int REQUEST_LOCATION_PERMISSION = 1;
+//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
+//                return;
+//            }
+//
+//            if (location != null) {
+//                double latitude = location.getLatitude();
+//                double longitude = location.getLongitude();
+//                double altitude = location.getAltitude();
+//                Toast.makeText(this, "东经：" + longitude + "北纬：" + latitude + "\n高度：" + altitude,Toast.LENGTH_SHORT).show();
+//            } else {
+//                Toast.makeText(this, "无法获取位置信息", Toast.LENGTH_SHORT).show();
+////            text.setText("无法获取位置信息");
+//            }
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+
 
         able_to_walk_no.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +125,7 @@ public class Triage_START extends AppCompatActivity {
 //                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                     isFragment_breath_Displayed = true;
-
+                    Toast.makeText(Triage_START.this, "If you need, you should call the emergency! ", Toast.LENGTH_SHORT).show();
                     able_to_walk_no.setEnabled(false);
                     able_to_walk_yes.setEnabled(true);
                 }
@@ -114,6 +144,10 @@ public class Triage_START extends AppCompatActivity {
                 able_to_walk_yes.setEnabled(false);
                 hideAllFragments();
                 isFragment_breath_Displayed = false;
+                Intent intent = new Intent(Triage_START.this, START_able_to_walk.class);
+                startActivity(intent);
+                Toast.makeText(Triage_START.this, R.string.Green_Toast, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -155,6 +189,8 @@ public class Triage_START extends AppCompatActivity {
         if (fragment_mental_status != null) {
             getSupportFragmentManager().beginTransaction().remove(fragment_mental_status).commit();
         }
+
+
 
 
     }
