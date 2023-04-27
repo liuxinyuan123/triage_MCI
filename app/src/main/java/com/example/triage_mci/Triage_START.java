@@ -85,34 +85,6 @@ public class Triage_START extends AppCompatActivity {
         }
 
 
-//        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-//        if (androidx.core.app.ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && androidx.core.app.ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//                int REQUEST_LOCATION_PERMISSION = 1;
-//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
-//                return;
-//            }
-//
-//            if (location != null) {
-//                double latitude = location.getLatitude();
-//                double longitude = location.getLongitude();
-//                double altitude = location.getAltitude();
-//                Toast.makeText(this, "东经：" + longitude + "北纬：" + latitude + "\n高度：" + altitude,Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(this, "无法获取位置信息", Toast.LENGTH_SHORT).show();
-////            text.setText("无法获取位置信息");
-//            }
-//            //    ActivityCompat#requestPermissions
-//            // here to request the missing permissions, and then overriding
-//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//            //                                          int[] grantResults)
-//            // to handle the case where the user grants the permission. See the documentation
-//            // for ActivityCompat#requestPermissions for more details.
-//            return;
-//        }
 
 
         able_to_walk_no.setOnClickListener(new View.OnClickListener() {
