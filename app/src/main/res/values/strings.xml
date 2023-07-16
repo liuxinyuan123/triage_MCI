@@ -1,5 +1,5 @@
 <resources>
-    <string name="mci_triage" translatable="false">MCI Triage</string>
+    <string name="mci_triage">MCI Triage</string>
     <string name="start" translatable="false">START</string>
     <string name="salt" translatable="false">SALT</string>
     <string name="asav" translatable="false">ASAV</string>
@@ -19,4 +19,14 @@
     <string name="perfusion_n_capillary_refill_or_radial_pulse">Perfusion?\n (capillary refill or radial pulse)</string>
     <string name="can_obey_commands_n_such_as_pick_up_your_hand">Can obey commands? \n Such as pick up your hand</string>
     <string name="Green_Toast">To look though the injured.</string>
+    <string name="Triage_program">Triage program </string>
+    <string name="Daily_Life">Daily life </string>
+    <string name="under30">"under 30 "</string>
+    <string name="above30">"above 30 "</string>
+    <string name="CALL_EMERGENCY">"CALL EMERGENCY "</string>
+    <string name="CALL">CALL</string>
+    <string name="NFC_test">NFC test</string>
+    <string name="assess_report_will_be_demostrated_here" translatable="false">assess report will be demostrated here</string>
+    <string name="reconfirm_information" translatable="false">reconfirm information</string>
+
 </resources>

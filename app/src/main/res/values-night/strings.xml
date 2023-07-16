@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">triage_MCI</string>
-    <string name="mci_triage" translatable="false">MCI Triage</string>
+    <string name="mci_triage">MCI Triage</string>
     <string name="start" translatable="false">START</string>
     <string name="salt" translatable="false">SALT</string>
     <string name="asav" translatable="false">ASAV</string>

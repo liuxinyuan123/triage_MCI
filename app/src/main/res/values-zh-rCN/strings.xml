@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="mci_triage">分诊程序</string>
     <string name="start_triage_adults">START法（成人版）</string>
     <string name="able_to_walk">可以行走吗？</string>
     <string name="no">否</string>
-    <string name="reference">参考文献</string>
     <string name="yes">是</string>
     <string name="spontaneous_breathing">自主呼吸</string>
     <string name="app_name">MCI分诊</string>
@@ -12,5 +12,11 @@
     <string name="position_airway">开放气道</string>
     <string name="can_obey_commands_n_such_as_pick_up_your_hand">可以遵循指令吗？\n例如举起手</string>
     <string name="Green_Toast">你将看到一些简单处理的方法</string>
-
+    <string name="Triage_program">分诊程序 </string>
+    <string name="Daily_Life">日常生活 </string>
+    <string name="under30">小于30</string>
+    <string name="above30">大于30</string>
+    <string name="CALL_EMERGENCY">报警</string>
+    <string name="CALL">拨打</string>
+    <string name="NFC_test">NFC测试</string>
 </resources>

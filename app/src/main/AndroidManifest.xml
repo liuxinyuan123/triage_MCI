@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-feature android:name="android.hardware.nfc"
+        android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/ic_police_car"
-        android:label="@string/app_name"
+        android:label="示例"
         android:supportsRtl="true"
         android:theme="@style/Theme.Triage_MCI"
         tools:targetApi="31">
         <activity
-            android:name=".START_able_to_walk"
-            android:parentActivityName=".Triage_START"
+            android:name=".NFC_test"
+            android:label="@string/NFC_test"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".Daily_life"
+            android:exported="false"
+            android:label="日常生活部分示例" />
+        <activity
+            android:name=".START_able_to_walk"
+            android:exported="false"
+            android:parentActivityName=".Triage_START" />
         <activity
             android:name=".triage_salt"
             android:exported="false"
@@ -37,10 +55,14 @@
             android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".NFC_discover"
+            android:launchMode="singleTask">
+        </activity>
+
     </application>
 
 </manifest>
