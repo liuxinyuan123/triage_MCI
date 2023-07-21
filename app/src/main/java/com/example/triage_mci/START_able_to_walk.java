@@ -34,7 +34,7 @@ public class START_able_to_walk extends AppCompatActivity {
                 } else {
                     // 如果已经获得权限，拨打电话
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel:1234567890")); // 在这里替换为您想要拨打的电话号码
+                    callIntent.setData(Uri.parse("tel:12121")); // 在这里替换为您想要拨打的电话号码
                     startActivity(callIntent);
                     Toast.makeText(START_able_to_walk.this, "successful to call", Toast.LENGTH_SHORT).show();
                 }

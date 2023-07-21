@@ -1,18 +1,17 @@
 package com.example.triage_mci;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-
 public class Triage_START extends AppCompatActivity {
+
     public static boolean isFragment_breath_Displayed = false;
     public static boolean isFragment_respiratory_displayed = false;
 
@@ -32,23 +31,24 @@ public class Triage_START extends AppCompatActivity {
 //    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_triage_start);
-
-        able_to_walk_no = findViewById( R.id.START_able_to_walk_no);
+        TextView start_title = findViewById(R.id.start_title);
+        able_to_walk_no = findViewById(R.id.START_able_to_walk_no);
         able_to_walk_yes = findViewById(R.id.START_able_to_walk_yes);
+
         able_to_walk_no.setEnabled(true);
         able_to_walk_yes.setEnabled(true);
 
 
         //隐藏默认出现的有无呼吸
         {
-        Fragment fragment_spontaneousBreath = getSupportFragmentManager().findFragmentById(R.id.fragment_spontaneousBreath);
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        assert fragment_spontaneousBreath != null;
-        fragmentTransaction.remove(fragment_spontaneousBreath);
-        fragmentTransaction.commit();
+            Fragment fragment_spontaneousBreath = getSupportFragmentManager().findFragmentById(R.id.fragment_spontaneousBreath);
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            assert fragment_spontaneousBreath != null;
+            fragmentTransaction.remove(fragment_spontaneousBreath);
+            fragmentTransaction.commit();
         }
 
         //隐藏默认的呼吸频率
@@ -85,20 +85,19 @@ public class Triage_START extends AppCompatActivity {
         }
 
 
-
-
         able_to_walk_no.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick (View view) {
                 if (!isFragment_breath_Displayed) {
                     Fragment myFragment = new spontaneous_breathing();
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.add(R.id.fragment_spontaneousBreath, myFragment);
+                    fragmentTransaction.add(R.id.fragment_spontaneousBreath , myFragment);
 //                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                     isFragment_breath_Displayed = true;
-                    Toast.makeText(Triage_START.this, "If you need, you should call the emergency! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Triage_START.this , "If you need, you should call the emergency! " , Toast.LENGTH_SHORT).show();
                     able_to_walk_no.setEnabled(false);
+
                     able_to_walk_yes.setEnabled(true);
                 }
 
@@ -106,29 +105,24 @@ public class Triage_START extends AppCompatActivity {
         });
 
 
-
-
         able_to_walk_yes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick (View view) {
                 able_to_walk_no.setEnabled(true);
                 able_to_walk_yes.setEnabled(false);
                 hideAllFragments();
                 isFragment_breath_Displayed = false;
-                Intent intent = new Intent(Triage_START.this, START_able_to_walk.class);
-                startActivity(intent);
-                Toast.makeText(Triage_START.this, R.string.Green_Toast, Toast.LENGTH_SHORT).show();
-
+                start_title.setBackgroundColor(getResources().getColor(R.color.green_text,getTheme()));
+//                Intent intent = new Intent(Triage_START.this, START_able_to_walk.class);
+//                startActivity(intent);
+                Toast.makeText(Triage_START.this , R.string.Green_Toast , Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
 
-
-
-    private void hideAllFragments() {
+    private void hideAllFragments () {
         // 隐藏自主呼吸Fragment
         Fragment fragment_spontaneousBreath = getSupportFragmentManager().findFragmentById(R.id.fragment_spontaneousBreath);
         if (fragment_spontaneousBreath != null) {
@@ -162,12 +156,10 @@ public class Triage_START extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().remove(fragment_mental_status).commit();
         }
 
-
-
-
     }
+
     @Override
-    protected void onResume() {
+    protected void onResume () {
         super.onResume();
 
         able_to_walk_no = findViewById(R.id.START_able_to_walk_no);
@@ -178,7 +170,6 @@ public class Triage_START extends AppCompatActivity {
         able_to_walk_yes.setEnabled(true);
 
     }
-
 
 
 }
