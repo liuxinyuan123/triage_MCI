@@ -1,4 +1,4 @@
-#### MCI_triage APP
+# MCI_triage APP
 
 #### Description
 This is an Android-based mobile application with the goal of guiding injured individuals through self-rescue and emergency response procedures following an accident. It also provides related alarm functions.
