@@ -1,4 +1,5 @@
-# 利用互联网指导意外伤害的体系
+#### MCI_triage
+
 
 #### Description
 This is an Android-based mobile application with the goal of guiding injured individuals through self-rescue and emergency response procedures following an accident. It also provides related alarm functions.
