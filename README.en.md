@@ -26,3 +26,5 @@ Software architecture description
 4.  Create Pull Request
 
 
+#### Addition
+I want to full fill the descriptions of the APP
